@@ -1,0 +1,32 @@
+[
+  {
+    "name": "emp1",
+    "age" : 25,
+    "skills" : "java,R",
+    "country": "IN"
+  },
+  {
+    "name": "emp2",
+    "age" : 30,
+    "skills" : "java,python",
+    "country": "IN"
+  },
+  {
+    "name": "emp3",
+    "age" : 35,
+    "skills" : "java,golang",
+    "country": "UK"
+  },
+  {
+    "name": "emp4",
+    "age" : 40,
+    "skills" : "python",
+    "country": "US"
+  },
+  {
+    "name": "emp5",
+    "age" : 50,
+    "skills" : "python",
+    "country": "US"
+  }
+]
