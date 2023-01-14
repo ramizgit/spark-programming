@@ -1,0 +1,18 @@
+[
+  {
+    "name": "emp1",
+    "salary" : "100k"
+  },
+  {
+    "name": "emp2",
+    "salary" : "200k"
+  },
+  {
+    "name": "emp3",
+    "salary" : "300k"
+  },
+  {
+    "name": "emp4",
+    "salary" : "400k"
+  }
+]
