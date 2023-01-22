@@ -52,5 +52,9 @@ public class DataFrameAndSqlOperations {
 
         //select emp name with max salary
         sparkSession.sql("select name from emp_table where salary = (select max(salary) from emp_table)").show();
+        
+        //groupby location
+        sparkSession.sql("select location, count(1) from emp_table group by location").show();
+        df.groupBy("location").count().show();
     }
 }
