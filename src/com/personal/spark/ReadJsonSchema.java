@@ -47,5 +47,41 @@ public class ReadJsonSchema {
 
         dataFrameWithInputSchema.printSchema();
         dataFrameWithInputSchema.show();
+        
+        //------------Start : Projections-------------------
+        dataFrameWithInputSchema.select("name", "age").show();
+        dataFrameWithInputSchema.select(col("name"), col("skills")).show();
+        dataFrameWithInputSchema.selectExpr("*", "age <= 30 as isYoung").show();
+        //------------End : Projections-------------------
+
+        //--------------Start : aggregations-----------------
+        dataFrameWithInputSchema.select(max("Age")).show();
+        dataFrameWithInputSchema.select(avg("Age")).show();
+        dataFrameWithInputSchema.groupBy(col("country")).count().show();
+        //--------------End : aggregations-----------------
+
+        //-----------------Start : sql operations on the data frame------------------
+        dataFrameWithInputSchema.createOrReplaceTempView("emp_table");
+
+        //project few columns
+        sparkSession.sql("select name, age from emp_table").show();
+
+        //select max age
+        sparkSession.sql("select max(age) from emp_table").show();
+
+        //select average age
+        sparkSession.sql("select avg(age) from emp_table").show();
+
+        //select emp name with max salary
+        sparkSession.sql("select name, age from emp_table where age >= (select avg(age) from emp_table)").show();
+
+        //groupby location
+        sparkSession.sql("select country, count(1) from emp_table group by country").show();
+
+        //-----------------End : sql operations on the data frame------------------
+
+        //--------------Start : withcolumn----------------
+        dataFrameWithInputSchema.withColumn("isYoung", when(col("age").lt(30), true).otherwise(false)).show();
+        //--------------Etart : withcolumn----------------
     }
 }
