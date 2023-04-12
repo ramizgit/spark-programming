@@ -39,8 +39,12 @@ public class DataFrameJoin {
         StructType empSchema = DataTypes.createStructType(empFields);
         StructType empSalarySchema = DataTypes.createStructType(empSalaryFields);
 
-        Dataset<Row> employeeDf = sparkSession.read().option("multiline", "true").format("json").schema(empSchema).
-                load("C:\\razarapersonal\\sparkprogram\\src\\main\\java\\com\\personal\\spark\\employee.json");
+        Dataset<Row> employeeDf = sparkSession.
+            read().
+            option("multiline", "true").
+            format("json").
+            schema(empSchema).
+            load("C:\\razarapersonal\\sparkprogram\\src\\main\\java\\com\\personal\\spark\\employee.json");
 
         employeeDf.printSchema();
         employeeDf.show();
