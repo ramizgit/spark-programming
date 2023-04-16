@@ -16,7 +16,12 @@ public class ReadJsonSchema {
 
     public static void main(String[] args){
         //spark context
-        final SparkConf sparkConfig = new SparkConf().setAppName("word count").setMaster("local[2]").set("spark.driver.host", "localhost").set("spark.testing.memory", "2147480000");
+        final SparkConf sparkConfig = new SparkConf().
+            setAppName("word count").
+            setMaster("local[2]").
+            set("spark.driver.host", "localhost").
+            set("spark.testing.memory", "2147480000");
+        
         SparkContext sparkContext = new SparkContext(sparkConfig);
         SparkSession sparkSession = new SparkSession(sparkContext);
 
