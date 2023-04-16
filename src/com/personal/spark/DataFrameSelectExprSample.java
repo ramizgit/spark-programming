@@ -62,7 +62,7 @@ public class DataFrame2 {
         Dataset<Row> newdf = employeeDf.repartition(2, employeeDf.col("name"));
         System.out.println("num of partitions : "+newdf.rdd().getNumPartitions());
 
-        //grp by
+        //group by
         employeeDf.groupBy("age").count().show();
 
         //dataframe distinct county
