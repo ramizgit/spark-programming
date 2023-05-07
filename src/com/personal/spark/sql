@@ -1,0 +1,3 @@
+SELECT WEEK(created_At) as week_number, COUNT(*) as count
+FROM clinics
+GROUP BY week_number;
