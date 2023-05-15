@@ -14,7 +14,12 @@ import java.util.List;
 public class DataFrameColExamples {
     public static void main(String[] args){
         //spark context
-        final SparkConf sparkConfig = new SparkConf().setAppName("word count").setMaster("local[2]").set("spark.driver.host", "localhost").set("spark.testing.memory", "2147480000");
+        final SparkConf sparkConfig = new SparkConf().
+            setAppName("word count").
+            setMaster("local[2]").
+            set("spark.driver.host", "localhost").
+            set("spark.testing.memory", "2147480000");
+        
         SparkContext sparkContext = new SparkContext(sparkConfig);
         SparkSession sparkSession = new SparkSession(sparkContext);
 
@@ -27,8 +32,12 @@ public class DataFrameColExamples {
 
         StructType schema = DataTypes.createStructType(fields);
 
-        Dataset<Row> employeeDf = sparkSession.read().option("multiline", "true").format("json").schema(schema).
-                load("C:\\razarapersonal\\sparkprogram\\src\\main\\java\\com\\personal\\spark\\employee.json");
+        Dataset<Row> employeeDf = sparkSession.
+            read().
+            option("multiline", "true").
+            format("json").
+            schema(schema).
+            load("C:\\razarapersonal\\sparkprogram\\src\\main\\java\\com\\personal\\spark\\employee.json");
 
         employeeDf.printSchema();
         System.out.println("emp count : "+employeeDf.count());
