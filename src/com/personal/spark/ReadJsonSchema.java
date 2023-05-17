@@ -8,6 +8,7 @@ import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
+import static org.apache.spark.sql.functions.*;
 
 import java.util.Arrays;
 import java.util.List;
