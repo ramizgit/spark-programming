@@ -35,5 +35,14 @@ public class SparkWindowOperations {
                 partitionBy("division"). //group by columns go here
                 orderBy(col("salary").desc()). //sorting column and order
                 rowsBetween(Window.unboundedPreceding(), Window.currentRow()); //row frame or range frame specification
+        
+        df.select(col("name"),
+                col("location"),
+                col("division"),
+                col("salary"),
+                dense_rank().over(windowSpec).alias("salary_rank"),
+                max("salary").over(windowSpec).alias("department_max_salary"),
+                max("salary").over(windowSpec).minus(col("salary")).alias("diff_with_department_max_salary")
+                ).show();
     }
 }
